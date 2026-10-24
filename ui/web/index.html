@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <title>VERITAS · Document Q&amp;A with citation checks</title>
+  <meta name="description" content="Ask questions about your documents and see which claims in each answer the cited evidence supports." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f5bd8'/%3E%3Cg fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 7H7.5v18H11'/%3E%3Cpath d='M21 7h3.5v18H21'/%3E%3Cpath d='m11.5 16.5 3 3 6-6.5'/%3E%3C/g%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+<!-- Icons: lucide, ISC licence -->
+<svg width="0" height="0" class="sprite" aria-hidden="true">
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol>
+</svg>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 20 20" aria-hidden="true"><path d="M7 3.5H4.5v13H7"/><path d="M13 3.5h2.5v13H13"/><path d="m7.5 10.25 1.75 1.75L12.5 8"/></svg>
+      <span class="brand-name">VERITAS</span>
+      <span class="brand-desc">Document Q&amp;A with claim-level citation checks</span>
+    </div>
+    <div class="topbar-meta">
+      <span class="runtime-info" id="runtime-info"></span>
+      <span class="status" id="header-status" role="status" aria-live="polite">
+        <span class="status-dot loading" id="status-dot" aria-hidden="true"></span>
+        <span id="status-text">Connecting…</span>
+      </span>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+  <aside class="sidebar">
+
+    <section class="panel" aria-labelledby="question-title">
+      <h2 class="panel-title" id="question-title"><label for="question-input">Question</label></h2>
+      <textarea
+        id="question-input"
+        rows="4"
+        maxlength="2000"
+        placeholder="For example: What was Northwind's gross margin in Q2 2026?"
+        aria-describedby="question-hint"
+      ></textarea>
+      <p class="hint" id="question-hint"><span class="visually-hidden">Shortcut: </span><kbd id="shortcut-mod">Ctrl</kbd><kbd>Enter</kbd><span class="hint-text">to ask</span></p>
+      <button type="button" class="btn btn-primary btn-block" id="submit-btn">
+        <span class="btn-spinner" aria-hidden="true"></span>
+        <span id="btn-label">Ask</span>
+      </button>
+    </section>
+
+    <section class="panel" aria-labelledby="sources-title">
+      <div class="panel-head">
+        <h2 class="panel-title" id="sources-title">Sources</h2>
+        <button type="button" class="btn btn-quiet" id="refresh-docs-btn">
+          <svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg>Refresh
+        </button>
+      </div>
+      <div class="field">
+        <label for="doc-select" class="field-label">Search in</label>
+        <select id="doc-select">
+          <option value="">All documents</option>
+        </select>
+        <p class="help" id="doc-help" aria-live="polite"></p>
+      </div>
+      <fieldset class="field checks">
+        <legend class="field-label">Also search</legend>
+        <label class="check"><input type="checkbox" id="include-web" checked /> Web <span class="check-note">DuckDuckGo</span></label>
+        <label class="check"><input type="checkbox" id="include-arxiv" checked /> arXiv</label>
+      </fieldset>
+      <div class="field upload-row hidden" id="upload-row">
+        <label class="btn btn-secondary" for="upload-input">
+          <svg class="icon" aria-hidden="true"><use href="#i-upload"/></svg>Add a document…
+        </label>
+        <input type="file" id="upload-input" class="visually-hidden" accept=".pdf,.md,.markdown,.txt" />
+        <p class="help" id="upload-status" aria-live="polite">PDF, Markdown or text, up to 20 MB</p>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="verification-title">
+      <h2 class="panel-title" id="verification-title">Verification</h2>
+      <label class="check"><input type="checkbox" id="verify-grounding" checked /> Check each claim against its sources</label>
+      <div class="field">
+        <label for="verification-mode" class="field-label">Method</label>
+        <select id="verification-mode">
+          <option value="local-nli">Local NLI model (offline)</option>
+          <option value="nli">Claude NLI (strict entailment)</option>
+          <option value="llm-as-judge">Claude as judge</option>
+        </select>
+        <p class="help">The local model runs on this server at no cost. The Claude methods need an API key.</p>
+      </div>
+    </section>
+
+  </aside>
+
+  <div class="content">
+
+    <section class="panel result" id="result-card" aria-labelledby="result-title" aria-busy="false">
+      <h2 class="panel-title" id="result-title">Answer</h2>
+      <div id="error-banner" class="alert hidden" role="alert"></div>
+
+      <p id="result-placeholder" class="empty">Ask a question to see the answer, the claims it makes and the evidence behind each one</p>
+
+      <div id="result-content" class="hidden">
+        <div id="grounding-badge-container"></div>
+        <div id="answer-display" class="answer"></div>
+
+        <section id="audit-logs-details" class="subsection" aria-labelledby="claims-title">
+          <h3 class="subsection-title" id="claims-title">Claims</h3>
+          <div id="audit-logs-content" class="table-wrap"></div>
+        </section>
+
+        <section class="subsection" aria-labelledby="evidence-title">
+          <h3 class="subsection-title" id="evidence-title">Evidence from your documents</h3>
+          <div id="retrieval-list" class="evidence-list"></div>
+        </section>
+
+        <section class="subsection" aria-labelledby="external-title">
+          <h3 class="subsection-title" id="external-title">Web and arXiv sources</h3>
+          <div id="sources-list" class="evidence-list"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="history-title">
+      <div class="panel-head">
+        <h2 class="panel-title" id="history-title">History</h2>
+        <div class="export-actions hidden" id="export-actions">
+          <button type="button" class="btn btn-secondary" id="export-csv-btn">
+            <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Export CSV
+          </button>
+          <button type="button" class="btn btn-secondary" id="export-pdf-btn">
+            <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Export PDF
+          </button>
+        </div>
+      </div>
+      <p id="export-error" class="alert hidden" role="alert"></p>
+      <p class="empty" id="history-empty">Questions you ask in this session appear here</p>
+      <div class="table-wrap flush hidden" id="history-table-wrapper">
+        <table class="table" id="history-table">
+          <thead>
+            <tr>
+              <th scope="col" class="num">#</th>
+              <th scope="col">Document</th>
+              <th scope="col">Question</th>
+              <th scope="col">Answer</th>
+              <th scope="col" class="num">Grounding</th>
+            </tr>
+          </thead>
+          <tbody id="history-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+</main>
+
+<script src="/static/app.js" defer></script>
+</body>
+</html>

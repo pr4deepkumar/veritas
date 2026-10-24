@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: veritas-engine
+    runtime: python
+    plan: free  # without this, Render provisions a paid instance
+    buildCommand: pip install .
+    startCommand: uvicorn veritas.api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: WEB_DIR
+        value: ui/web
+      # The free instance is too small for local models; use the managed services.
+      - key: LLM_PROVIDER
+        value: claude
+      - key: VECTOR_STORE
+        value: pinecone
+      # sync: false makes the Blueprint deploy prompt for these instead of starting without them.
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: PINECONE_API_KEY
+        sync: false

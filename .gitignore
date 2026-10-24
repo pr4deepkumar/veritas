@@ -1,0 +1,59 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Caches and logs
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ipynb_checkpoints/
+.DS_Store
+.vscode/
+
+# Environments and packaging
+.venv/
+venv/
+env/
+build/
+dist/
+*.egg-info/
+/veritas_agents.egg-info/
+
+# Environment configurations and secrets
+.env
+!.env.example
+
+# Airflow local logs, runs, and databases
+airflow/logs/
+airflow/airflow.db
+airflow/airflow.cfg
+airflow/webserver_config.py
+
+# Downloaded files / temporary outputs
+tmp/
+downloads/
+*.csv
+*.pdf
+!README.md
+
+# Terraform binaries & local state
+.terraform/
+terraform/.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+crash.log
+
+# Terraform variable files hold API keys
+*.tfvars
+!*.tfvars.example
+
+# Linter cache
+.ruff_cache/
+
+# Local index and uploaded files (rebuild with: python -m pipelines.ingest_local)
+data/index/
+data/documents/uploads/

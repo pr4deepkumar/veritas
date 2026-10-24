@@ -1,0 +1,1331 @@
+[
+  {
+    "id": "case_1_fully_supported",
+    "question": "What is the revenue growth of the company in Q2 2026?",
+    "answer": "The company's revenue grew by 12% year-over-year in Q2 2026 [1].",
+    "retrieval": [
+      {
+        "id": "doc1-p1",
+        "score": 0.95,
+        "document": "Q2_2026_Report.pdf",
+        "page_num": 1,
+        "preview": "In Q2 2026, the company recorded total revenue of $50M, representing a 12% growth year-over-year.",
+        "content": "In Q2 2026, the company recorded total revenue of $50M, representing a 12% growth year-over-year. Operating income was $10M."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The company's revenue grew by 12% year-over-year in Q2 2026",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "case_2_hallucinated_number",
+    "question": "What was the operating margin of the division?",
+    "answer": "The operating margin of the division was 24% [1].",
+    "retrieval": [
+      {
+        "id": "doc2-p2",
+        "score": 0.92,
+        "document": "Division_Financials.pdf",
+        "page_num": 2,
+        "preview": "The division recorded revenues of $10M and operating income of $1.5M, yielding a 15% operating margin.",
+        "content": "The division recorded revenues of $10M and operating income of $1.5M, yielding a 15% operating margin. This was up from 12% in the prior quarter."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The operating margin of the division was 24%",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_3_partially_supported",
+    "question": "Where is the new research center located and when will it open?",
+    "answer": "The new research center is located in Boston and is scheduled to open in October 2026 [1].",
+    "retrieval": [
+      {
+        "id": "doc3-p1",
+        "score": 0.88,
+        "document": "Press_Release_2026.pdf",
+        "page_num": 1,
+        "preview": "Our new research facility in Boston is nearing completion.",
+        "content": "Our new research facility in Boston is nearing completion. We are currently finalizing the interior fit-out and recruiting staff."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The new research center is located in Boston and is scheduled to open in October 2026",
+        "verdict": "partially_supported"
+      }
+    ]
+  },
+  {
+    "id": "case_4_contradiction",
+    "question": "Did the company profit or loss in Q1?",
+    "answer": "The company recorded a profit of $2 million in Q1 [1].",
+    "retrieval": [
+      {
+        "id": "doc4-p3",
+        "score": 0.91,
+        "document": "Q1_Summary.pdf",
+        "page_num": 3,
+        "preview": "Due to unexpected market headwinds, the company suffered a net loss of $2 million in Q1.",
+        "content": "Due to unexpected market headwinds, the company suffered a net loss of $2 million in Q1. This was the first loss in three quarters."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The company recorded a profit of $2 million in Q1",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_5_multiple_claims",
+    "question": "Tell me about the new product features and its launch price.",
+    "answer": "The new product features an upgraded battery life of 24 hours [1] and will retail at a starting price of $199 [2].",
+    "retrieval": [
+      {
+        "id": "doc5-p1",
+        "score": 0.94,
+        "document": "Spec_Sheet.pdf",
+        "page_num": 1,
+        "preview": "We are proud to introduce our next-gen product with 24 hours of continuous battery life.",
+        "content": "We are proud to introduce our next-gen product with 24 hours of continuous battery life and water resistance up to 50 meters."
+      },
+      {
+        "id": "doc5-p2",
+        "score": 0.89,
+        "document": "Pricing_Guide.pdf",
+        "page_num": 2,
+        "preview": "The retail launch price is set at $299 for the standard edition.",
+        "content": "The retail launch price is set at $299 for the standard edition. Early-bird discount pricing will be available for $249."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The new product features an upgraded battery life of 24 hours",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "will retail at a starting price of $199",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_6_paraphrase_supported",
+    "question": "How many people does the company employ?",
+    "answer": "The company had 4,200 employees at the end of 2025 [1]. Its workforce spans 12 countries [1].",
+    "retrieval": [
+      {
+        "id": "hr_annual_report_2025-p4",
+        "score": 0.94,
+        "document": "HR_Annual_Report_2025",
+        "page_num": 4,
+        "preview": "As of December 31, 2025, the company employed 4,200 people across 12 countries, up from 3,900 a year earlier.",
+        "content": "As of December 31, 2025, the company employed 4,200 people across 12 countries, up from 3,900 a year earlier."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The company had 4,200 employees at the end of 2025",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Its workforce spans 12 countries",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "case_7_numeric_paraphrase_supported",
+    "question": "What share of revenue came from subscriptions?",
+    "answer": "Subscriptions made up a quarter of total revenue in the quarter [1].",
+    "retrieval": [
+      {
+        "id": "q3_earnings_release-p2",
+        "score": 0.94,
+        "document": "Q3_Earnings_Release",
+        "page_num": 2,
+        "preview": "Subscription revenue was $30 million, or 25% of the quarter's total revenue of $120 million.",
+        "content": "Subscription revenue was $30 million, or 25% of the quarter's total revenue of $120 million."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "Subscriptions made up a quarter of total revenue in the quarter",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "case_8_uncited_but_supported",
+    "question": "When was Lumirax approved?",
+    "answer": "Lumirax was approved by the FDA on March 14, 2025.",
+    "retrieval": [
+      {
+        "id": "regulatory_brief-p1",
+        "score": 0.94,
+        "document": "Regulatory_Brief",
+        "page_num": 1,
+        "preview": "The FDA approved Lumirax for adults with moderate plaque psoriasis on March 14, 2025.",
+        "content": "The FDA approved Lumirax for adults with moderate plaque psoriasis on March 14, 2025. Approval was based on two phase 3 trials."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "Lumirax was approved by the FDA on March 14, 2025",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "case_9_two_chunks_supported",
+    "question": "Where will the new plant be built and how many jobs will it create?",
+    "answer": "The new battery plant will be built in Reno, Nevada [1]. It is expected to create 1,800 jobs by 2028 [2].",
+    "retrieval": [
+      {
+        "id": "press_release_battery_plant-p1",
+        "score": 0.94,
+        "document": "Press_Release_Battery_Plant",
+        "page_num": 1,
+        "preview": "The company will build its new battery plant in Reno, Nevada, on a 200-acre site.",
+        "content": "The company will build its new battery plant in Reno, Nevada, on a 200-acre site."
+      },
+      {
+        "id": "press_release_battery_plant-p2",
+        "score": 0.89,
+        "document": "Press_Release_Battery_Plant",
+        "page_num": 2,
+        "preview": "The Reno plant is expected to create 1,800 jobs by 2028.",
+        "content": "The Reno plant is expected to create 1,800 jobs by 2028."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The new battery plant will be built in Reno, Nevada",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "It is expected to create 1,800 jobs by 2028",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "case_10_comparison_supported",
+    "question": "Which region's sales grew faster?",
+    "answer": "Asia-Pacific sales grew faster than European sales, at 14% versus 8% [1].",
+    "retrieval": [
+      {
+        "id": "regional_sales_review-p5",
+        "score": 0.94,
+        "document": "Regional_Sales_Review",
+        "page_num": 5,
+        "preview": "Sales in Europe grew 8% year over year, while sales in Asia-Pacific grew 14%.",
+        "content": "Sales in Europe grew 8% year over year, while sales in Asia-Pacific grew 14%."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "Asia-Pacific sales grew faster than European sales, at 14% versus 8%",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "case_11_arxiv_source_supported",
+    "question": "What results does the sparse routing paper report?",
+    "answer": "The paper reports 87.1% top-1 accuracy on ImageNet [2]. Its largest model uses 40% fewer FLOPs than a dense baseline of the same size [2].",
+    "retrieval": [
+      {
+        "id": "internal_replication_notes-p1",
+        "score": 0.94,
+        "document": "Internal_Replication_Notes",
+        "page_num": 1,
+        "preview": "Our team plans to replicate the sparse routing results on the public test split next quarter.",
+        "content": "Our team plans to replicate the sparse routing results on the public test split next quarter."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Sparse Mixture Routing for Efficient Vision Transformers",
+        "url": null,
+        "snippet": "We introduce sparse mixture routing for vision transformers. Our largest model reaches 87.1% top-1 accuracy on ImageNet while using 40% fewer FLOPs than a dense baseline of the same size.",
+        "kind": "arxiv"
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The paper reports 87.1% top-1 accuracy on ImageNet",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Its largest model uses 40% fewer FLOPs than a dense baseline of the same size",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "case_12_web_source_supported",
+    "question": "What is a transformer model?",
+    "answer": "A transformer is a deep learning architecture built on multi-head attention [1]. It was introduced in 2017 [1].",
+    "retrieval": [],
+    "sources": [
+      {
+        "title": "Transformer (deep learning architecture)",
+        "url": "https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)",
+        "snippet": "A transformer is a deep learning architecture based on the multi-head attention mechanism. It was introduced in the 2017 paper Attention Is All You Need.",
+        "kind": "web"
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "A transformer is a deep learning architecture built on multi-head attention",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "It was introduced in 2017",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "case_13_wrong_percentage",
+    "question": "How did monthly churn change after the loyalty program?",
+    "answer": "Monthly churn fell to 2.3% after the loyalty program launched [1].",
+    "retrieval": [
+      {
+        "id": "customer_metrics_q2-p3",
+        "score": 0.94,
+        "document": "Customer_Metrics_Q2",
+        "page_num": 3,
+        "preview": "Monthly churn fell from 4.1% to 3.2% in the six months after the loyalty program launched.",
+        "content": "Monthly churn fell from 4.1% to 3.2% in the six months after the loyalty program launched."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "Monthly churn fell to 2.3% after the loyalty program launched",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_14_wrong_count",
+    "question": "How many stores did the company open?",
+    "answer": "The company opened 73 new stores during the fiscal year [1]. It now has 412 stores in total [1].",
+    "retrieval": [
+      {
+        "id": "retail_expansion_update-p2",
+        "score": 0.94,
+        "document": "Retail_Expansion_Update",
+        "page_num": 2,
+        "preview": "We opened 37 new stores during the fiscal year, bringing our total to 412.",
+        "content": "We opened 37 new stores during the fiscal year, bringing our total to 412."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The company opened 73 new stores during the fiscal year",
+        "verdict": "unsupported"
+      },
+      {
+        "claim_text": "It now has 412 stores in total",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "case_15_wrong_unit",
+    "question": "What is the 2026 R&D budget?",
+    "answer": "The 2026 research and development budget is $85 billion [1].",
+    "retrieval": [
+      {
+        "id": "budget_plan_2026-p6",
+        "score": 0.94,
+        "document": "Budget_Plan_2026",
+        "page_num": 6,
+        "preview": "The research and development budget for 2026 is set at $85 million, a 5% increase over 2025.",
+        "content": "The research and development budget for 2026 is set at $85 million, a 5% increase over 2025."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The 2026 research and development budget is $85 billion",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_16_wrong_year",
+    "question": "When did the Halvorsen merger close?",
+    "answer": "The merger with Halvorsen Logistics closed on June 30, 2025 [1].",
+    "retrieval": [
+      {
+        "id": "merger_faq-p1",
+        "score": 0.94,
+        "document": "Merger_FAQ",
+        "page_num": 1,
+        "preview": "The merger with Halvorsen Logistics closed on June 30, 2024, after regulatory approval in May.",
+        "content": "The merger with Halvorsen Logistics closed on June 30, 2024, after regulatory approval in May."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The merger with Halvorsen Logistics closed on June 30, 2025",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_17_wrong_quarter",
+    "question": "When will the Atlas suite be generally available?",
+    "answer": "The Atlas analytics suite is planned to become generally available in Q1 2026 [1].",
+    "retrieval": [
+      {
+        "id": "product_roadmap_2026-p2",
+        "score": 0.94,
+        "document": "Product_Roadmap_2026",
+        "page_num": 2,
+        "preview": "General availability of the Atlas analytics suite is planned for Q3 2026, following a public beta in Q2.",
+        "content": "General availability of the Atlas analytics suite is planned for Q3 2026, following a public beta in Q2."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The Atlas analytics suite is planned to become generally available in Q1 2026",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_18_wrong_person",
+    "question": "Who will lead the new division?",
+    "answer": "David Okafor will lead the new Cloud Infrastructure division [1].",
+    "retrieval": [
+      {
+        "id": "leadership_memo-p1",
+        "score": 0.94,
+        "document": "Leadership_Memo",
+        "page_num": 1,
+        "preview": "Maria Chen will lead the newly formed Cloud Infrastructure division, reporting to CEO David Okafor.",
+        "content": "Maria Chen will lead the newly formed Cloud Infrastructure division, reporting to CEO David Okafor."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "David Okafor will lead the new Cloud Infrastructure division",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_19_wrong_location",
+    "question": "Where will the second data center be, and when will it open?",
+    "answer": "The second data center will be located in Frankfurt, Germany [1]. It is scheduled to go live in 2027 [1].",
+    "retrieval": [
+      {
+        "id": "infrastructure_plan-p3",
+        "score": 0.94,
+        "document": "Infrastructure_Plan",
+        "page_num": 3,
+        "preview": "The second data center will be located in Dublin, Ireland, and is scheduled to go live in 2027.",
+        "content": "The second data center will be located in Dublin, Ireland, and is scheduled to go live in 2027."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The second data center will be located in Frankfurt, Germany",
+        "verdict": "unsupported"
+      },
+      {
+        "claim_text": "It is scheduled to go live in 2027",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "case_20_reversed_roles",
+    "question": "Which company acquired Kestrel AI?",
+    "answer": "Kestrel AI acquired Northwind Systems for $210 million [1].",
+    "retrieval": [
+      {
+        "id": "market_news_digest-p1",
+        "score": 0.94,
+        "document": "Market_News_Digest",
+        "page_num": 1,
+        "preview": "Northwind Systems acquired the robotics startup Kestrel AI for $210 million in an all-cash deal.",
+        "content": "Northwind Systems acquired the robotics startup Kestrel AI for $210 million in an all-cash deal."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "Kestrel AI acquired Northwind Systems for $210 million",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_21_increase_vs_decrease",
+    "question": "How did operating costs change?",
+    "answer": "Operating costs increased 6% compared with the prior year [1].",
+    "retrieval": [
+      {
+        "id": "operations_review-p2",
+        "score": 0.94,
+        "document": "Operations_Review",
+        "page_num": 2,
+        "preview": "Operating costs decreased 6% compared with the prior year, mainly because of lower freight rates.",
+        "content": "Operating costs decreased 6% compared with the prior year, mainly because of lower freight rates."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "Operating costs increased 6% compared with the prior year",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_22_rejected_vs_approved",
+    "question": "What did the board decide about the dividend?",
+    "answer": "The board approved raising the quarterly dividend [1]. The dividend stands at $0.40 per share [1].",
+    "retrieval": [
+      {
+        "id": "board_minutes_march-p4",
+        "score": 0.94,
+        "document": "Board_Minutes_March",
+        "page_num": 4,
+        "preview": "The board rejected the proposal to raise the quarterly dividend and kept it at $0.40 per share.",
+        "content": "The board rejected the proposal to raise the quarterly dividend and kept it at $0.40 per share."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The board approved raising the quarterly dividend",
+        "verdict": "unsupported"
+      },
+      {
+        "claim_text": "The dividend stands at $0.40 per share",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "case_23_negated_recommendation",
+    "question": "Is the treatment recommended for children?",
+    "answer": "The guideline recommends the treatment for children under 12 [1].",
+    "retrieval": [
+      {
+        "id": "clinical_guideline_v4-p7",
+        "score": 0.94,
+        "document": "Clinical_Guideline_v4",
+        "page_num": 7,
+        "preview": "The guideline does not recommend the treatment for patients under 12 years old because safety data are insufficient.",
+        "content": "The guideline does not recommend the treatment for patients under 12 years old because safety data are insufficient."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The guideline recommends the treatment for children under 12",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_24_added_statistic",
+    "question": "What did the survey find about schedules?",
+    "answer": "Most respondents, about 68%, prefer a hybrid schedule with two or three office days per week [1].",
+    "retrieval": [
+      {
+        "id": "workforce_survey_2026-p2",
+        "score": 0.94,
+        "document": "Workforce_Survey_2026",
+        "page_num": 2,
+        "preview": "Most respondents said they prefer a hybrid schedule with two or three office days per week.",
+        "content": "Most respondents said they prefer a hybrid schedule with two or three office days per week."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "Most respondents, about 68%, prefer a hybrid schedule with two or three office days per week",
+        "verdict": "partially_supported"
+      }
+    ]
+  },
+  {
+    "id": "case_25_unsupported_cause",
+    "question": "Why did fourth-quarter revenue rise?",
+    "answer": "Revenue rose 10% in the fourth quarter because of the redesigned mobile app [1].",
+    "retrieval": [
+      {
+        "id": "q4_results-p1",
+        "score": 0.94,
+        "document": "Q4_Results",
+        "page_num": 1,
+        "preview": "Revenue rose 10% in the fourth quarter.",
+        "content": "Revenue rose 10% in the fourth quarter. During the quarter, the company also launched its redesigned mobile app."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "Revenue rose 10% in the fourth quarter because of the redesigned mobile app",
+        "verdict": "partially_supported"
+      }
+    ]
+  },
+  {
+    "id": "case_26_overgeneralized_scope",
+    "question": "Who is eligible for the learning stipend?",
+    "answer": "All employees, including part-time staff, are eligible for a $1,000 annual learning stipend [1].",
+    "retrieval": [
+      {
+        "id": "benefits_policy-p3",
+        "score": 0.94,
+        "document": "Benefits_Policy",
+        "page_num": 3,
+        "preview": "Full-time employees are eligible for a $1,000 annual learning stipend.",
+        "content": "Full-time employees are eligible for a $1,000 annual learning stipend."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "All employees, including part-time staff, are eligible for a $1,000 annual learning stipend",
+        "verdict": "partially_supported"
+      }
+    ]
+  },
+  {
+    "id": "case_27_added_date",
+    "question": "What does the updated travel policy require?",
+    "answer": "The updated travel policy, effective January 1, requires pre-approval for all international trips [1].",
+    "retrieval": [
+      {
+        "id": "travel_policy_2026-p1",
+        "score": 0.94,
+        "document": "Travel_Policy_2026",
+        "page_num": 1,
+        "preview": "The updated travel policy requires pre-approval for all international trips.",
+        "content": "The updated travel policy requires pre-approval for all international trips."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The updated travel policy, effective January 1, requires pre-approval for all international trips",
+        "verdict": "partially_supported"
+      }
+    ]
+  },
+  {
+    "id": "case_28_added_coverage",
+    "question": "What does the warranty cover?",
+    "answer": "The device has a two-year limited warranty that covers manufacturing defects and accidental damage [1].",
+    "retrieval": [
+      {
+        "id": "product_manual_x2-p12",
+        "score": 0.94,
+        "document": "Product_Manual_X2",
+        "page_num": 12,
+        "preview": "The device carries a two-year limited warranty covering manufacturing defects.",
+        "content": "The device carries a two-year limited warranty covering manufacturing defects."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The device has a two-year limited warranty that covers manufacturing defects and accidental damage",
+        "verdict": "partially_supported"
+      }
+    ]
+  },
+  {
+    "id": "case_29_swapped_citations",
+    "question": "What were the year's revenue and headcount?",
+    "answer": "Annual revenue reached $640 million [2]. Headcount ended the year at 2,150 [1].",
+    "retrieval": [
+      {
+        "id": "finance_summary_2025-p1",
+        "score": 0.94,
+        "document": "Finance_Summary_2025",
+        "page_num": 1,
+        "preview": "Annual revenue reached $640 million, up 11% from the previous year.",
+        "content": "Annual revenue reached $640 million, up 11% from the previous year."
+      },
+      {
+        "id": "hr_summary_2025-p1",
+        "score": 0.89,
+        "document": "HR_Summary_2025",
+        "page_num": 1,
+        "preview": "Headcount ended the year at 2,150 employees.",
+        "content": "Headcount ended the year at 2,150 employees."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "Annual revenue reached $640 million",
+        "verdict": "unsupported"
+      },
+      {
+        "claim_text": "Headcount ended the year at 2,150",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_30_nonexistent_citation",
+    "question": "What are the X2 scooter's battery and top speed?",
+    "answer": "The X2 scooter has a 48 V, 15 Ah battery [1]. It has a top speed of 25 km/h [3].",
+    "retrieval": [
+      {
+        "id": "spec_sheet_x2-p1",
+        "score": 0.94,
+        "document": "Spec_Sheet_X2",
+        "page_num": 1,
+        "preview": "The X2 scooter has a 48 V, 15 Ah battery and a top speed of 25 km/h.",
+        "content": "The X2 scooter has a 48 V, 15 Ah battery and a top speed of 25 km/h."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The X2 scooter has a 48 V, 15 Ah battery",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "It has a top speed of 25 km/h",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_31_outside_knowledge",
+    "question": "What is the company's mission and who founded it?",
+    "answer": "The company's mission is to make clean water affordable for every household [1]. It was founded in 1998 by Elena Petrova.",
+    "retrieval": [
+      {
+        "id": "about_us-p1",
+        "score": 0.94,
+        "document": "About_Us",
+        "page_num": 1,
+        "preview": "Our mission is to make clean water affordable for every household.",
+        "content": "Our mission is to make clean water affordable for every household."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The company's mission is to make clean water affordable for every household",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "It was founded in 1998 by Elena Petrova",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_32_states_missing_information",
+    "question": "What are the Orion headset's price and release date?",
+    "answer": "The Orion headset will launch at $349 [1]. The sources do not state a release date.",
+    "retrieval": [
+      {
+        "id": "launch_brief_orion-p1",
+        "score": 0.94,
+        "document": "Launch_Brief_Orion",
+        "page_num": 1,
+        "preview": "The Orion headset will launch at $349 in the United States.",
+        "content": "The Orion headset will launch at $349 in the United States."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The Orion headset will launch at $349",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "case_33_four_claims_mixed",
+    "question": "Summarize Northwind's second quarter.",
+    "answer": "Second-quarter revenue was $95 million, up 9% year over year [1]. Gross margin improved to 64% [1]. The company repurchased $20 million of shares [2]. It ended the quarter with $310 million in cash and no debt [2].",
+    "retrieval": [
+      {
+        "id": "northwind_q2_report-p1",
+        "score": 0.94,
+        "document": "Northwind_Q2_Report",
+        "page_num": 1,
+        "preview": "Second-quarter revenue was $95 million, up 9% year over year.",
+        "content": "Second-quarter revenue was $95 million, up 9% year over year. Gross margin improved to 61%."
+      },
+      {
+        "id": "northwind_q2_report-p2",
+        "score": 0.89,
+        "document": "Northwind_Q2_Report",
+        "page_num": 2,
+        "preview": "The company repurchased $20 million of shares and ended the quarter with $310 million in cash.",
+        "content": "The company repurchased $20 million of shares and ended the quarter with $310 million in cash."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "Second-quarter revenue was $95 million, up 9% year over year",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Gross margin improved to 64%",
+        "verdict": "unsupported"
+      },
+      {
+        "claim_text": "The company repurchased $20 million of shares",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "It ended the quarter with $310 million in cash and no debt",
+        "verdict": "partially_supported"
+      }
+    ]
+  },
+  {
+    "id": "case_34_dose_and_side_effects",
+    "question": "What does the Cardiozen label say about dosing and side effects?",
+    "answer": "The recommended starting dose is 25 mg once daily [1]. The most common side effects were dizziness and nausea [1].",
+    "retrieval": [
+      {
+        "id": "cardiozen_label-p2",
+        "score": 0.94,
+        "document": "Cardiozen_Label",
+        "page_num": 2,
+        "preview": "The recommended starting dose is 25 mg once daily.",
+        "content": "The recommended starting dose is 25 mg once daily. The most common side effects were dizziness and fatigue."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The recommended starting dose is 25 mg once daily",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "The most common side effects were dizziness and nausea",
+        "verdict": "partially_supported"
+      }
+    ]
+  },
+  {
+    "id": "case_35_contract_terms",
+    "question": "What are the termination terms?",
+    "answer": "Either party may terminate the agreement for convenience with 30 days' written notice [1]. Fees paid in advance are non-refundable [1].",
+    "retrieval": [
+      {
+        "id": "master_services_agreement-p9",
+        "score": 0.94,
+        "document": "Master_Services_Agreement",
+        "page_num": 9,
+        "preview": "Either party may terminate this Agreement for convenience with 60 days' written notice.",
+        "content": "Either party may terminate this Agreement for convenience with 60 days' written notice. Fees paid in advance are non-refundable."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "Either party may terminate the agreement for convenience with 30 days' written notice",
+        "verdict": "unsupported"
+      },
+      {
+        "claim_text": "Fees paid in advance are non-refundable",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "case_36_wrong_superlative",
+    "question": "How much electricity came from renewables, and which source led?",
+    "answer": "Renewables supplied 42% of the grid's electricity in 2025 [1]. Solar was the largest renewable source [1].",
+    "retrieval": [
+      {
+        "id": "energy_outlook_2026-p4",
+        "score": 0.94,
+        "document": "Energy_Outlook_2026",
+        "page_num": 4,
+        "preview": "Renewables supplied 42% of the grid's electricity in 2025, led by wind at 24% and solar at 11%.",
+        "content": "Renewables supplied 42% of the grid's electricity in 2025, led by wind at 24% and solar at 11%."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "Renewables supplied 42% of the grid's electricity in 2025",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Solar was the largest renewable source",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_37_arxiv_unsupported_extra",
+    "question": "What does the grounded decoding paper claim?",
+    "answer": "The model reduces hallucinated citations by 35% on CiteBench compared with a non-retrieval baseline [1]. It also cuts inference latency in half [1].",
+    "retrieval": [],
+    "sources": [
+      {
+        "title": "Grounded Decoding Reduces Hallucinated Citations",
+        "url": null,
+        "snippet": "We present a retrieval-augmented model that reduces hallucinated citations by 35% on the CiteBench benchmark compared with a non-retrieval baseline.",
+        "kind": "arxiv"
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The model reduces hallucinated citations by 35% on CiteBench compared with a non-retrieval baseline",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "It also cuts inference latency in half",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_38_policy_supported",
+    "question": "How much parental leave do employees get?",
+    "answer": "Employees receive 16 weeks of fully paid parental leave [1]. The leave can be taken within the first year after a birth or adoption [1].",
+    "retrieval": [
+      {
+        "id": "benefits_policy-p5",
+        "score": 0.94,
+        "document": "Benefits_Policy",
+        "page_num": 5,
+        "preview": "Employees receive 16 weeks of fully paid parental leave, which can be taken within the first year after a birth or adoption.",
+        "content": "Employees receive 16 weeks of fully paid parental leave, which can be taken within the first year after a birth or adoption."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "Employees receive 16 weeks of fully paid parental leave",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "The leave can be taken within the first year after a birth or adoption",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "case_39_overstated_finding",
+    "question": "Does the supplement improve memory?",
+    "answer": "The supplement significantly improved memory in a 12-week study of 40 adults [1].",
+    "retrieval": [
+      {
+        "id": "pilot_study_summary-p1",
+        "score": 0.94,
+        "document": "Pilot_Study_Summary",
+        "page_num": 1,
+        "preview": "In a 12-week pilot study of 40 adults, participants taking the supplement showed a small improvement on recall tests, but the result was not statistically significant.",
+        "content": "In a 12-week pilot study of 40 adults, participants taking the supplement showed a small improvement on recall tests, but the result was not statistically significant."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The supplement significantly improved memory in a 12-week study of 40 adults",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "case_40_certifications_supported",
+    "question": "Which certifications does the facility hold?",
+    "answer": "The facility holds ISO 9001 and ISO 14001 certifications [1]. It completed its first SOC 2 Type II audit in 2025 [1].",
+    "retrieval": [
+      {
+        "id": "facility_profile-p2",
+        "score": 0.94,
+        "document": "Facility_Profile",
+        "page_num": 2,
+        "preview": "The facility is certified to ISO 9001 and ISO 14001 and completed its first SOC 2 Type II audit in 2025.",
+        "content": "The facility is certified to ISO 9001 and ISO 14001 and completed its first SOC 2 Type II audit in 2025."
+      }
+    ],
+    "expected_claims": [
+      {
+        "claim_text": "The facility holds ISO 9001 and ISO 14001 certifications",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "It completed its first SOC 2 Type II audit in 2025",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "doc_01_northwind_results",
+    "question": "How did Northwind do in Q2 2026?",
+    "retrieval": [
+      {
+        "id": "845864970b3b97e2#p1#c0",
+        "score": 0.9,
+        "document": "samples/northwind_q2_2026_report",
+        "page_num": 1,
+        "preview": "# Northwind Systems — Second Quarter 2026 Results",
+        "content": "# Northwind Systems — Second Quarter 2026 Results\n\n*Fictional sample document for the VERITAS demo.*\n\n## Financial summary\n\nNorthwind Systems reported second-quarter revenue of $95 million, up 9% from $87 million in the second quarter of 2025. Subscription revenue grew 15% to $62 million and now accounts for about two thirds of total revenue, while hardware revenue declined 2% to $33 million.\n\nGross margin improved to 61%, from 58% a year earlier, mainly because subscriptions carry higher margins than hardware. Operating income was $14 million, compared with $9 million in the prior-year quarter.\n\n## Regional performance\n\nRevenue in North America grew 6% to $51 million. Europe grew 8% to $27 million, and Asia-Pacific was the fastest-growing region, up 14% to $17 million. The company opened a sales office in Singapore in April to support Asia-Pacific customers.\n\n## Cash and capital allocation\n\nNorthwind ended the quarter with $310 million in cash and short-term investments and no outstanding debt. During the quarter the company repurchased $20 million of its shares. The board did not change the quarterly dividend, which remains $0.40 per share.\n\n## People\n\nHeadcount was 2,150 at the end of June, up from 1,980 a year earlier. Most of the new hires joined the engineering and customer success teams.\n\n## Outlook"
+      },
+      {
+        "id": "845864970b3b97e2#p1#c1",
+        "score": 0.9,
+        "document": "samples/northwind_q2_2026_report",
+        "page_num": 1,
+        "preview": "which remains $0.40 per share.",
+        "content": "which remains $0.40 per share.\n\n## People\n\nHeadcount was 2,150 at the end of June, up from 1,980 a year earlier. Most of the new hires joined the engineering and customer success teams.\n\n## Outlook\n\nFor the third quarter of 2026, Northwind expects revenue between $97 million and $101 million. Management cautioned that hardware demand could remain soft in Europe because of longer customer approval cycles."
+      }
+    ],
+    "answer": "Northwind's revenue grew 9% to $95 million in Q2 2026 [1]. Hardware revenue declined 2% to $33 million [1]. Its net income was $14 million [1].",
+    "expected_claims": [
+      {
+        "claim_text": "Northwind's revenue grew 9% to $95 million in Q2 2026",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Hardware revenue declined 2% to $33 million",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Its net income was $14 million",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "doc_02_northwind_capital",
+    "question": "What did Northwind do with its cash?",
+    "retrieval": [
+      {
+        "id": "845864970b3b97e2#p1#c0",
+        "score": 0.9,
+        "document": "samples/northwind_q2_2026_report",
+        "page_num": 1,
+        "preview": "# Northwind Systems — Second Quarter 2026 Results",
+        "content": "# Northwind Systems — Second Quarter 2026 Results\n\n*Fictional sample document for the VERITAS demo.*\n\n## Financial summary\n\nNorthwind Systems reported second-quarter revenue of $95 million, up 9% from $87 million in the second quarter of 2025. Subscription revenue grew 15% to $62 million and now accounts for about two thirds of total revenue, while hardware revenue declined 2% to $33 million.\n\nGross margin improved to 61%, from 58% a year earlier, mainly because subscriptions carry higher margins than hardware. Operating income was $14 million, compared with $9 million in the prior-year quarter.\n\n## Regional performance\n\nRevenue in North America grew 6% to $51 million. Europe grew 8% to $27 million, and Asia-Pacific was the fastest-growing region, up 14% to $17 million. The company opened a sales office in Singapore in April to support Asia-Pacific customers.\n\n## Cash and capital allocation\n\nNorthwind ended the quarter with $310 million in cash and short-term investments and no outstanding debt. During the quarter the company repurchased $20 million of its shares. The board did not change the quarterly dividend, which remains $0.40 per share.\n\n## People\n\nHeadcount was 2,150 at the end of June, up from 1,980 a year earlier. Most of the new hires joined the engineering and customer success teams.\n\n## Outlook"
+      },
+      {
+        "id": "845864970b3b97e2#p1#c1",
+        "score": 0.9,
+        "document": "samples/northwind_q2_2026_report",
+        "page_num": 1,
+        "preview": "which remains $0.40 per share.",
+        "content": "which remains $0.40 per share.\n\n## People\n\nHeadcount was 2,150 at the end of June, up from 1,980 a year earlier. Most of the new hires joined the engineering and customer success teams.\n\n## Outlook\n\nFor the third quarter of 2026, Northwind expects revenue between $97 million and $101 million. Management cautioned that hardware demand could remain soft in Europe because of longer customer approval cycles."
+      }
+    ],
+    "answer": "Northwind kept its quarterly dividend at $0.40 per share [1]. It repurchased $20 million of its shares during the quarter [1]. Northwind ended the quarter with $310 million in cash and $50 million of debt [1].",
+    "expected_claims": [
+      {
+        "claim_text": "Northwind kept its quarterly dividend at $0.40 per share",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "It repurchased $20 million of its shares during the quarter",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Northwind ended the quarter with $310 million in cash and $50 million of debt",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "doc_03_northwind_regions",
+    "question": "Which region grew fastest, and what is the outlook?",
+    "retrieval": [
+      {
+        "id": "845864970b3b97e2#p1#c0",
+        "score": 0.9,
+        "document": "samples/northwind_q2_2026_report",
+        "page_num": 1,
+        "preview": "# Northwind Systems — Second Quarter 2026 Results",
+        "content": "# Northwind Systems — Second Quarter 2026 Results\n\n*Fictional sample document for the VERITAS demo.*\n\n## Financial summary\n\nNorthwind Systems reported second-quarter revenue of $95 million, up 9% from $87 million in the second quarter of 2025. Subscription revenue grew 15% to $62 million and now accounts for about two thirds of total revenue, while hardware revenue declined 2% to $33 million.\n\nGross margin improved to 61%, from 58% a year earlier, mainly because subscriptions carry higher margins than hardware. Operating income was $14 million, compared with $9 million in the prior-year quarter.\n\n## Regional performance\n\nRevenue in North America grew 6% to $51 million. Europe grew 8% to $27 million, and Asia-Pacific was the fastest-growing region, up 14% to $17 million. The company opened a sales office in Singapore in April to support Asia-Pacific customers.\n\n## Cash and capital allocation\n\nNorthwind ended the quarter with $310 million in cash and short-term investments and no outstanding debt. During the quarter the company repurchased $20 million of its shares. The board did not change the quarterly dividend, which remains $0.40 per share.\n\n## People\n\nHeadcount was 2,150 at the end of June, up from 1,980 a year earlier. Most of the new hires joined the engineering and customer success teams.\n\n## Outlook"
+      },
+      {
+        "id": "845864970b3b97e2#p1#c1",
+        "score": 0.9,
+        "document": "samples/northwind_q2_2026_report",
+        "page_num": 1,
+        "preview": "which remains $0.40 per share.",
+        "content": "which remains $0.40 per share.\n\n## People\n\nHeadcount was 2,150 at the end of June, up from 1,980 a year earlier. Most of the new hires joined the engineering and customer success teams.\n\n## Outlook\n\nFor the third quarter of 2026, Northwind expects revenue between $97 million and $101 million. Management cautioned that hardware demand could remain soft in Europe because of longer customer approval cycles."
+      }
+    ],
+    "answer": "Asia-Pacific was Northwind's fastest-growing region in Q2 2026, up 14% to $17 million [1]. Revenue in Europe fell 8% to $27 million [1]. For the third quarter, Northwind expects revenue between $97 million and $101 million [2].",
+    "expected_claims": [
+      {
+        "claim_text": "Asia-Pacific was Northwind's fastest-growing region in Q2 2026, up 14% to $17 million",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Revenue in Europe fell 8% to $27 million",
+        "verdict": "unsupported"
+      },
+      {
+        "claim_text": "For the third quarter, Northwind expects revenue between $97 million and $101 million",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "doc_04_northwind_dividend",
+    "question": "Did Northwind pay a dividend?",
+    "retrieval": [
+      {
+        "id": "845864970b3b97e2#p1#c1",
+        "score": 0.9,
+        "document": "samples/northwind_q2_2026_report",
+        "page_num": 1,
+        "preview": "which remains $0.40 per share.",
+        "content": "which remains $0.40 per share.\n\n## People\n\nHeadcount was 2,150 at the end of June, up from 1,980 a year earlier. Most of the new hires joined the engineering and customer success teams.\n\n## Outlook\n\nFor the third quarter of 2026, Northwind expects revenue between $97 million and $101 million. Management cautioned that hardware demand could remain soft in Europe because of longer customer approval cycles."
+      },
+      {
+        "id": "845864970b3b97e2#p1#c0",
+        "score": 0.9,
+        "document": "samples/northwind_q2_2026_report",
+        "page_num": 1,
+        "preview": "# Northwind Systems — Second Quarter 2026 Results",
+        "content": "# Northwind Systems — Second Quarter 2026 Results\n\n*Fictional sample document for the VERITAS demo.*\n\n## Financial summary\n\nNorthwind Systems reported second-quarter revenue of $95 million, up 9% from $87 million in the second quarter of 2025. Subscription revenue grew 15% to $62 million and now accounts for about two thirds of total revenue, while hardware revenue declined 2% to $33 million.\n\nGross margin improved to 61%, from 58% a year earlier, mainly because subscriptions carry higher margins than hardware. Operating income was $14 million, compared with $9 million in the prior-year quarter.\n\n## Regional performance\n\nRevenue in North America grew 6% to $51 million. Europe grew 8% to $27 million, and Asia-Pacific was the fastest-growing region, up 14% to $17 million. The company opened a sales office in Singapore in April to support Asia-Pacific customers.\n\n## Cash and capital allocation\n\nNorthwind ended the quarter with $310 million in cash and short-term investments and no outstanding debt. During the quarter the company repurchased $20 million of its shares. The board did not change the quarterly dividend, which remains $0.40 per share.\n\n## People\n\nHeadcount was 2,150 at the end of June, up from 1,980 a year earlier. Most of the new hires joined the engineering and customer success teams.\n\n## Outlook"
+      }
+    ],
+    "answer": "Northwind did not pay a dividend in the second quarter [2]. Headcount rose to 2,150 by the end of June [1].",
+    "expected_claims": [
+      {
+        "claim_text": "Northwind did not pay a dividend in the second quarter",
+        "verdict": "unsupported"
+      },
+      {
+        "claim_text": "Headcount rose to 2,150 by the end of June",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "doc_05_benefits_leave",
+    "question": "What benefits do employees get?",
+    "retrieval": [
+      {
+        "id": "f14decc458025ec7#p1#c0",
+        "score": 0.9,
+        "document": "samples/employee_benefits_policy",
+        "page_num": 1,
+        "preview": "# Northwind Systems — Employee Benefits Policy (2026)",
+        "content": "# Northwind Systems — Employee Benefits Policy (2026)\n\n*Fictional sample document for the VERITAS demo.*\n\n## Parental leave\n\nEmployees receive 16 weeks of fully paid parental leave after the birth or adoption of a child. Leave can be taken in one block or in up to three separate periods, as long as all of it is used within the first year. Employees on parental leave keep their full health coverage.\n\n## Learning stipend\n\nFull-time employees are eligible for an annual learning stipend of $1,000 for courses, certifications, books and conference tickets. Part-time employees receive a prorated stipend based on their contracted hours. Unused stipend does not carry over to the next calendar year.\n\n## Hybrid work\n\nMost roles follow a hybrid schedule with two or three office days per week, agreed with the employee's manager. Fully remote arrangements require approval from a department head and are reviewed every twelve months.\n\n## Retirement plan\n\nThe company matches employee retirement contributions dollar for dollar up to 4% of base salary. Matching contributions vest immediately.\n\n## Travel\n\nAll international business travel requires pre-approval from the employee's manager and the finance team at least two weeks before departure. Domestic trips under $1,500 only need manager approval."
+      }
+    ],
+    "answer": "Employees get 16 weeks of fully paid parental leave [1]. Leave can be split into up to three periods within the first year [1]. Unused learning stipend carries over to the next year [1]. The company matches retirement contributions up to 6% of base salary [1].",
+    "expected_claims": [
+      {
+        "claim_text": "Employees get 16 weeks of fully paid parental leave",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Leave can be split into up to three periods within the first year",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Unused learning stipend carries over to the next year",
+        "verdict": "unsupported"
+      },
+      {
+        "claim_text": "The company matches retirement contributions up to 6% of base salary",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "doc_06_benefits_policy",
+    "question": "What does the 2026 benefits policy say about stipends, remote work and travel?",
+    "retrieval": [
+      {
+        "id": "f14decc458025ec7#p1#c0",
+        "score": 0.9,
+        "document": "samples/employee_benefits_policy",
+        "page_num": 1,
+        "preview": "# Northwind Systems — Employee Benefits Policy (2026)",
+        "content": "# Northwind Systems — Employee Benefits Policy (2026)\n\n*Fictional sample document for the VERITAS demo.*\n\n## Parental leave\n\nEmployees receive 16 weeks of fully paid parental leave after the birth or adoption of a child. Leave can be taken in one block or in up to three separate periods, as long as all of it is used within the first year. Employees on parental leave keep their full health coverage.\n\n## Learning stipend\n\nFull-time employees are eligible for an annual learning stipend of $1,000 for courses, certifications, books and conference tickets. Part-time employees receive a prorated stipend based on their contracted hours. Unused stipend does not carry over to the next calendar year.\n\n## Hybrid work\n\nMost roles follow a hybrid schedule with two or three office days per week, agreed with the employee's manager. Fully remote arrangements require approval from a department head and are reviewed every twelve months.\n\n## Retirement plan\n\nThe company matches employee retirement contributions dollar for dollar up to 4% of base salary. Matching contributions vest immediately.\n\n## Travel\n\nAll international business travel requires pre-approval from the employee's manager and the finance team at least two weeks before departure. Domestic trips under $1,500 only need manager approval."
+      }
+    ],
+    "answer": "Northwind's 2026 benefits policy gives full-time employees a $1,000 annual learning stipend [1]. Fully remote work needs a department head's approval and is reviewed every year [1]. International trips must be approved at least four weeks ahead [1].",
+    "expected_claims": [
+      {
+        "claim_text": "Northwind's 2026 benefits policy gives full-time employees a $1,000 annual learning stipend",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Fully remote work needs a department head's approval and is reviewed every year",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "International trips must be approved at least four weeks ahead",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "doc_07_atlas_beta",
+    "question": "Tell me about the Atlas beta and pricing.",
+    "retrieval": [
+      {
+        "id": "ec86a7b4e2056e17#p1#c0",
+        "score": 0.9,
+        "document": "samples/atlas_product_brief",
+        "page_num": 1,
+        "preview": "# Atlas Analytics Suite — Product Brief",
+        "content": "# Atlas Analytics Suite — Product Brief\n\n*Fictional sample document for the VERITAS demo.*\n\n## Overview\n\nAtlas is Northwind's analytics suite for operations teams. It combines dashboards, scheduled reports and anomaly alerts on top of a customer's existing data warehouse, without copying the data into a separate system.\n\n## Availability\n\nA public beta opened in May 2026 with 140 participating customers. General availability is planned for the third quarter of 2026. Atlas will be offered in two tiers: Team, at $49 per user per month, and Enterprise, priced by contract.\n\n## Features\n\n- Dashboards that refresh every five minutes, or in real time on the Enterprise tier.\n- Anomaly alerts that compare each metric with its typical weekly pattern and notify users by email or chat.\n- Scheduled PDF reports delivered daily, weekly or monthly.\n- Role-based access control and single sign-on on both tiers; audit logs on the Enterprise tier only.\n\n## Security and compliance\n\nAtlas runs in Northwind's existing data centers in Virginia and Oregon. A third data center, in Dublin, Ireland, is scheduled to go live in 2027 for customers who need their data stored in the European Union. Northwind's platform is certified to ISO 27001 and completed its first SOC 2 Type II audit in 2025.\n\n## Beta results\n\nBeta customers reported that Atlas cut the time spent preparing weekly operations reports from about six hours to under one hour. The beta did not measure the effect on decision quality."
+      }
+    ],
+    "answer": "Atlas, Northwind's analytics suite, opened a public beta in May 2026 with 140 customers [1]. The Team tier costs $49 per user per month [1]. Audit logs are available on both tiers [1]. Beta customers said Atlas improved their decision quality [1].",
+    "expected_claims": [
+      {
+        "claim_text": "Atlas, Northwind's analytics suite, opened a public beta in May 2026 with 140 customers",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "The Team tier costs $49 per user per month",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Audit logs are available on both tiers",
+        "verdict": "unsupported"
+      },
+      {
+        "claim_text": "Beta customers said Atlas improved their decision quality",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "doc_08_atlas_launch",
+    "question": "When does Atlas launch and where is data stored?",
+    "retrieval": [
+      {
+        "id": "ec86a7b4e2056e17#p1#c0",
+        "score": 0.9,
+        "document": "samples/atlas_product_brief",
+        "page_num": 1,
+        "preview": "# Atlas Analytics Suite — Product Brief",
+        "content": "# Atlas Analytics Suite — Product Brief\n\n*Fictional sample document for the VERITAS demo.*\n\n## Overview\n\nAtlas is Northwind's analytics suite for operations teams. It combines dashboards, scheduled reports and anomaly alerts on top of a customer's existing data warehouse, without copying the data into a separate system.\n\n## Availability\n\nA public beta opened in May 2026 with 140 participating customers. General availability is planned for the third quarter of 2026. Atlas will be offered in two tiers: Team, at $49 per user per month, and Enterprise, priced by contract.\n\n## Features\n\n- Dashboards that refresh every five minutes, or in real time on the Enterprise tier.\n- Anomaly alerts that compare each metric with its typical weekly pattern and notify users by email or chat.\n- Scheduled PDF reports delivered daily, weekly or monthly.\n- Role-based access control and single sign-on on both tiers; audit logs on the Enterprise tier only.\n\n## Security and compliance\n\nAtlas runs in Northwind's existing data centers in Virginia and Oregon. A third data center, in Dublin, Ireland, is scheduled to go live in 2027 for customers who need their data stored in the European Union. Northwind's platform is certified to ISO 27001 and completed its first SOC 2 Type II audit in 2025.\n\n## Beta results\n\nBeta customers reported that Atlas cut the time spent preparing weekly operations reports from about six hours to under one hour. The beta did not measure the effect on decision quality."
+      }
+    ],
+    "answer": "Atlas is scheduled for general availability in the third quarter of 2026 [1]. Its Dublin data center already stores EU customers' data [1]. Weekly report preparation fell from about six hours to under one hour for beta customers [1].",
+    "expected_claims": [
+      {
+        "claim_text": "Atlas is scheduled for general availability in the third quarter of 2026",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Its Dublin data center already stores EU customers' data",
+        "verdict": "unsupported"
+      },
+      {
+        "claim_text": "Weekly report preparation fell from about six hours to under one hour for beta customers",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "doc_09_cross_document",
+    "question": "What do we know about Northwind's subscriptions and Atlas hosting?",
+    "retrieval": [
+      {
+        "id": "845864970b3b97e2#p1#c0",
+        "score": 0.9,
+        "document": "samples/northwind_q2_2026_report",
+        "page_num": 1,
+        "preview": "# Northwind Systems — Second Quarter 2026 Results",
+        "content": "# Northwind Systems — Second Quarter 2026 Results\n\n*Fictional sample document for the VERITAS demo.*\n\n## Financial summary\n\nNorthwind Systems reported second-quarter revenue of $95 million, up 9% from $87 million in the second quarter of 2025. Subscription revenue grew 15% to $62 million and now accounts for about two thirds of total revenue, while hardware revenue declined 2% to $33 million.\n\nGross margin improved to 61%, from 58% a year earlier, mainly because subscriptions carry higher margins than hardware. Operating income was $14 million, compared with $9 million in the prior-year quarter.\n\n## Regional performance\n\nRevenue in North America grew 6% to $51 million. Europe grew 8% to $27 million, and Asia-Pacific was the fastest-growing region, up 14% to $17 million. The company opened a sales office in Singapore in April to support Asia-Pacific customers.\n\n## Cash and capital allocation\n\nNorthwind ended the quarter with $310 million in cash and short-term investments and no outstanding debt. During the quarter the company repurchased $20 million of its shares. The board did not change the quarterly dividend, which remains $0.40 per share.\n\n## People\n\nHeadcount was 2,150 at the end of June, up from 1,980 a year earlier. Most of the new hires joined the engineering and customer success teams.\n\n## Outlook"
+      },
+      {
+        "id": "ec86a7b4e2056e17#p1#c0",
+        "score": 0.9,
+        "document": "samples/atlas_product_brief",
+        "page_num": 1,
+        "preview": "# Atlas Analytics Suite — Product Brief",
+        "content": "# Atlas Analytics Suite — Product Brief\n\n*Fictional sample document for the VERITAS demo.*\n\n## Overview\n\nAtlas is Northwind's analytics suite for operations teams. It combines dashboards, scheduled reports and anomaly alerts on top of a customer's existing data warehouse, without copying the data into a separate system.\n\n## Availability\n\nA public beta opened in May 2026 with 140 participating customers. General availability is planned for the third quarter of 2026. Atlas will be offered in two tiers: Team, at $49 per user per month, and Enterprise, priced by contract.\n\n## Features\n\n- Dashboards that refresh every five minutes, or in real time on the Enterprise tier.\n- Anomaly alerts that compare each metric with its typical weekly pattern and notify users by email or chat.\n- Scheduled PDF reports delivered daily, weekly or monthly.\n- Role-based access control and single sign-on on both tiers; audit logs on the Enterprise tier only.\n\n## Security and compliance\n\nAtlas runs in Northwind's existing data centers in Virginia and Oregon. A third data center, in Dublin, Ireland, is scheduled to go live in 2027 for customers who need their data stored in the European Union. Northwind's platform is certified to ISO 27001 and completed its first SOC 2 Type II audit in 2025.\n\n## Beta results\n\nBeta customers reported that Atlas cut the time spent preparing weekly operations reports from about six hours to under one hour. The beta did not measure the effect on decision quality."
+      }
+    ],
+    "answer": "Northwind's subscription revenue grew 15% to $62 million [1]. Atlas runs in data centers in Virginia and Oregon [2]. Northwind's platform is certified to ISO 27001 [1].",
+    "expected_claims": [
+      {
+        "claim_text": "Northwind's subscription revenue grew 15% to $62 million",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Atlas runs in data centers in Virginia and Oregon",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Northwind's platform is certified to ISO 27001",
+        "verdict": "unsupported"
+      }
+    ]
+  },
+  {
+    "id": "doc_10_demo_hardware_dividend",
+    "question": "How did hardware revenue and the dividend change?",
+    "retrieval": [
+      {
+        "id": "845864970b3b97e2#p1#c0",
+        "score": 0.9,
+        "document": "samples/northwind_q2_2026_report",
+        "page_num": 1,
+        "preview": "# Northwind Systems — Second Quarter 2026 Results",
+        "content": "# Northwind Systems — Second Quarter 2026 Results\n\n*Fictional sample document for the VERITAS demo.*\n\n## Financial summary\n\nNorthwind Systems reported second-quarter revenue of $95 million, up 9% from $87 million in the second quarter of 2025. Subscription revenue grew 15% to $62 million and now accounts for about two thirds of total revenue, while hardware revenue declined 2% to $33 million.\n\nGross margin improved to 61%, from 58% a year earlier, mainly because subscriptions carry higher margins than hardware. Operating income was $14 million, compared with $9 million in the prior-year quarter.\n\n## Regional performance\n\nRevenue in North America grew 6% to $51 million. Europe grew 8% to $27 million, and Asia-Pacific was the fastest-growing region, up 14% to $17 million. The company opened a sales office in Singapore in April to support Asia-Pacific customers.\n\n## Cash and capital allocation\n\nNorthwind ended the quarter with $310 million in cash and short-term investments and no outstanding debt. During the quarter the company repurchased $20 million of its shares. The board did not change the quarterly dividend, which remains $0.40 per share.\n\n## People\n\nHeadcount was 2,150 at the end of June, up from 1,980 a year earlier. Most of the new hires joined the engineering and customer success teams.\n\n## Outlook"
+      },
+      {
+        "id": "845864970b3b97e2#p1#c1",
+        "score": 0.9,
+        "document": "samples/northwind_q2_2026_report",
+        "page_num": 1,
+        "preview": "which remains $0.40 per share.",
+        "content": "which remains $0.40 per share.\n\n## People\n\nHeadcount was 2,150 at the end of June, up from 1,980 a year earlier. Most of the new hires joined the engineering and customer success teams.\n\n## Outlook\n\nFor the third quarter of 2026, Northwind expects revenue between $97 million and $101 million. Management cautioned that hardware demand could remain soft in Europe because of longer customer approval cycles."
+      }
+    ],
+    "answer": "Northwind's hardware revenue declined 2% to $33 million in Q2 2026 [1]. Northwind's dividend remains $0.40 per share [1].",
+    "expected_claims": [
+      {
+        "claim_text": "Northwind's hardware revenue declined 2% to $33 million in Q2 2026",
+        "verdict": "supported"
+      },
+      {
+        "claim_text": "Northwind's dividend remains $0.40 per share",
+        "verdict": "supported"
+      }
+    ]
+  },
+  {
+    "id": "doc_11_demo_net_income_dividend",
+    "question": "What was Northwind's net income and dividend in Q2 2026?",
+    "retrieval": [
+      {
+        "id": "845864970b3b97e2#p1#c0",
+        "score": 0.9,
+        "document": "samples/northwind_q2_2026_report",
+        "page_num": 1,
+        "preview": "# Northwind Systems — Second Quarter 2026 Results",
+        "content": "# Northwind Systems — Second Quarter 2026 Results\n\n*Fictional sample document for the VERITAS demo.*\n\n## Financial summary\n\nNorthwind Systems reported second-quarter revenue of $95 million, up 9% from $87 million in the second quarter of 2025. Subscription revenue grew 15% to $62 million and now accounts for about two thirds of total revenue, while hardware revenue declined 2% to $33 million.\n\nGross margin improved to 61%, from 58% a year earlier, mainly because subscriptions carry higher margins than hardware. Operating income was $14 million, compared with $9 million in the prior-year quarter.\n\n## Regional performance\n\nRevenue in North America grew 6% to $51 million. Europe grew 8% to $27 million, and Asia-Pacific was the fastest-growing region, up 14% to $17 million. The company opened a sales office in Singapore in April to support Asia-Pacific customers.\n\n## Cash and capital allocation\n\nNorthwind ended the quarter with $310 million in cash and short-term investments and no outstanding debt. During the quarter the company repurchased $20 million of its shares. The board did not change the quarterly dividend, which remains $0.40 per share.\n\n## People\n\nHeadcount was 2,150 at the end of June, up from 1,980 a year earlier. Most of the new hires joined the engineering and customer success teams.\n\n## Outlook"
+      },
+      {
+        "id": "845864970b3b97e2#p1#c1",
+        "score": 0.9,
+        "document": "samples/northwind_q2_2026_report",
+        "page_num": 1,
+        "preview": "which remains $0.40 per share.",
+        "content": "which remains $0.40 per share.\n\n## People\n\nHeadcount was 2,150 at the end of June, up from 1,980 a year earlier. Most of the new hires joined the engineering and customer success teams.\n\n## Outlook\n\nFor the third quarter of 2026, Northwind expects revenue between $97 million and $101 million. Management cautioned that hardware demand could remain soft in Europe because of longer customer approval cycles."
+      }
+    ],
+    "answer": "Northwind's net income in Q2 2026 was $14 million [1]. The company did not pay a dividend in Q2 2026 [2].",
+    "expected_claims": [
+      {
+        "claim_text": "Northwind's net income in Q2 2026 was $14 million",
+        "verdict": "unsupported"
+      },
+      {
+        "claim_text": "The company did not pay a dividend in Q2 2026",
+        "verdict": "unsupported"
+      }
+    ]
+  }
+]

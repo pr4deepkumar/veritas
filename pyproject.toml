@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "veritas-agents"
+dynamic = ["version"]
+description = "Document research platform with multi-agent retrieval and claim-level citation verification"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi>=0.116.0",
+  "uvicorn>=0.35.0",
+  "pydantic>=2.11.0",
+  "pydantic-settings>=2.10.0",
+  # 2.x: structured outputs (output_config), server-side refusal fallbacks, no sampling params.
+  "anthropic>=2.9.0,<3",
+  # 10.x: metadata-filtered queries, fetch_by_metadata, batched upserts.
+  "pinecone>=10.0.0,<11",
+  "boto3>=1.40.0",
+  "fpdf2>=2.8.0",
+  "requests>=2.32.0",
+  "pypdf>=5.9.0",
+  "numpy>=1.26",  # the local hybrid index
+  "python-multipart>=0.0.20",  # document uploads (multipart forms)
+]
+
+[project.optional-dependencies]
+airflow = [
+  "apache-airflow>=2.10.0",
+]
+# Run fully on this machine: local LLM, embeddings and NLI verifier (open models, no API keys).
+local = [
+  "transformers>=4.56",
+  "torch>=2.3",
+]
+dev = [
+  "pytest>=8.0",
+  "httpx>=0.27",  # required by fastapi.testclient
+  "ruff>=0.6",
+]
+
+[tool.setuptools.dynamic]
+version = { attr = "veritas.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.pytest.ini_options]
+testpaths = ["tests/unit"]
+pythonpath = ["src", "tests/evaluation"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+src = ["src", "tests", "airflow"]
+extend-exclude = ["*.md"]  # don't reformat code samples inside documentation
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM"]
+# `ruff format` handles line length; prompt strings are kept one line per instruction.
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["veritas", "pipelines"]

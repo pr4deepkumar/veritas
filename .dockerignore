@@ -1,0 +1,21 @@
+# The image only needs pyproject.toml, README.md, src/ and ui/. Excluding the rest keeps the
+# build context small (terraform/.terraform alone holds hundreds of MB of provider binaries)
+# and keeps secrets such as .env out of it.
+.git
+.env
+.venv
+venv
+**/__pycache__
+**/*.py[cod]
+*.egg-info
+.pytest_cache
+.ruff_cache
+.mypy_cache
+terraform
+airflow
+tests
+screenshots
+scripts
+data
+*.md
+!README.md

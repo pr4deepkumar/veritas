@@ -1,0 +1,20 @@
+# VERITAS Terraform Variables Configuration
+# Copy to terraform.tfvars (git-ignored, because it holds API keys) and edit.
+aws_region     = "us-east-1"
+environment    = "prod"
+app_name       = "veritas"
+s3_bucket_name = "veritas-document-storage"
+
+# API keys. Leave empty to set them in AWS Secrets Manager instead; Terraform will not
+# overwrite values set there later.
+anthropic_api_key = "your-anthropic-api-key"
+pinecone_api_key  = "your-pinecone-api-key"
+
+# Pinecone Settings
+pinecone_index_name = "veritas-research"
+pinecone_cloud      = "aws"
+pinecone_region     = "us-east-1"
+
+# Container settings
+# image_tag        = "latest"   # or a git SHA pushed by scripts/deploy_aws.sh
+# cpu_architecture = "X86_64"   # ARM64 is cheaper; build the image with PLATFORM=linux/arm64
